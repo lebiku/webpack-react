@@ -1,0 +1,23 @@
+{
+  "name": "react_webpack",
+  "version": "1.0.0",
+  "description": "React Webpack example",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "Markus Wälchli",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^0.14.51",
+    "@types/react-dom": "^0.14.19",
+    "office-ui-fabric-react": "^0.78.2",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.2.2"
+  }
+}
