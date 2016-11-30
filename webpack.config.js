@@ -1,8 +1,11 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: path.resolve("dist")
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -34,5 +37,12 @@ module.exports = {
     externals: {
         "react": "React",
         "react-dom": "ReactDOM"
+    },
+
+    // webpack dev server configuration
+    devServer: {
+        contentBase: "./dist",
+        noInfo: false,
+        inline: true
     },
 };

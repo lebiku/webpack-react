@@ -8,7 +8,6 @@ import {
 
 import * as React from 'react';
 //import { css } from 'office-ui-fabric-react';
-import 'office-ui-fabric-react/dist/css/fabric.css' 
 import 'office-ui-fabric-react/dist/css/fabric.min.css' 
 
 export interface HelloProps { compiler: string; framework: string; }
@@ -21,8 +20,8 @@ export class Hello extends React.Component<HelloProps, {}> {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           url: 'http://bing.com',
-          previewImageSrc: './dist/images/document-preview.png',
-          iconSrc: './dist/images/icon-ppt.png',
+          previewImageSrc: './images/document-preview.png',
+          iconSrc: './images/icon-ppt.png',
           width: 318,
           height: 196,
           accentColor: '#ce4b1f'
@@ -32,7 +31,7 @@ export class Hello extends React.Component<HelloProps, {}> {
 
     return <div>   
                 <h1>Hi from {this.props.compiler} and {this.props.framework}!</h1>
-                <h1>Fly kusilee fly! :-) <i className="ms-Icon ms-Icon--Airplane" aria-hidden="true"></i></h1>
+                <h1>drive kusi drive!<i className="ms-Icon ms-Icon--Car" aria-hidden="true"></i></h1>
 
                 <div>
                     <DocumentCard onClickHref='http://bing.com'>
@@ -44,7 +43,7 @@ export class Hello extends React.Component<HelloProps, {}> {
                                 activity='Created a few minutes ago'
                                 people={
                                 [
-                                    { name: 'Annie Lindqvist', profileImageSrc: './dist/images/avatar-kat.png' }
+                                    { name: 'Annie Lindqvist', profileImageSrc: './images/avatar-kat.png' }
                                 ]
                             }
                         />
