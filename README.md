@@ -11,4 +11,4 @@
 
 
 # Execute
-Either run webpack or npm run build
+Either run webpack or npm run build and open index.html in a browser of your choice
