@@ -10,6 +10,10 @@ import * as React from 'react';
 //import { css } from 'office-ui-fabric-react';
 import 'office-ui-fabric-react/dist/css/fabric.min.css' 
 
+import { ISPLists, ISPList } from './services/SPLists';
+import MockHttpClient from './services/MockHttpClient';
+import SharepointListClient from './services/SharepointListClient';
+
 export interface HelloProps { compiler: string; framework: string; }
 
 export class Hello extends React.Component<HelloProps, {}> {
@@ -29,10 +33,11 @@ export class Hello extends React.Component<HelloProps, {}> {
       ],
     };
 
+    this._renderListAsync();
+
     return <div>   
                 <h1>Hi from {this.props.compiler} and {this.props.framework}!</h1>
                 <h1>drive kusi drive!<i className="ms-Icon ms-Icon--Car" aria-hidden="true"></i></h1>
-
                 <div>
                     <DocumentCard onClickHref='http://bing.com'>
                         <DocumentCardPreview { ...previewProps } />
@@ -48,7 +53,46 @@ export class Hello extends React.Component<HelloProps, {}> {
                             }
                         />
                     </DocumentCard>
-                </div>               
+                </div> 
+                <div id="spListContainer" />
             </div>;
+    }
+
+    private _renderListAsync(): void {
+    // Local environment
+        if (typeof _spBodyOnLoadFunctionNames === 'undefined') {
+            // no SharePoint
+            this._getMockListData().then((response) => {
+                this._renderList(response.value);
+            }); 
+        } else {
+            // SharePoint
+            SharepointListClient.get("").then((response) =>{
+                this._renderList(response.value);
+            });
+        } 
+    }
+
+    private _getMockListData(): Promise<ISPLists> {
+    return MockHttpClient.get("mockUrl")
+        .then((data: ISPList[]) => {
+             var listData: ISPLists = { value: data };
+             return listData;
+         }) as Promise<ISPLists>;
+    }
+
+    private _renderList(items: ISPList[]): void {
+        let html: string = '';
+        items.forEach((item: ISPList) => {
+            html += `
+            <ul class="">
+                <li class="">
+                    <span class="ms-font-l">${item.Title}</span>
+                </li>
+            </ul>`;
+        });
+        
+        let listContainer = document.getElementById('spListContainer');
+        listContainer.innerHTML = html;
     }
 }

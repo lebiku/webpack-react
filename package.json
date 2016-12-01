@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "server": "copyfiles -f ./index.html ./node_modules/react/dist/react.js ./node_modules/react-dom/dist/react-dom.js dist/ & webpack-dev-server --progress --inline"
+    "server": "copyfiles -f ./index.html dist/ & webpack-dev-server --progress --inline"
   },
   "author": "Markus Wälchli",
   "license": "ISC",
