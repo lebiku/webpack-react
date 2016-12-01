@@ -8,7 +8,10 @@
 4. npm install --save-dev ts-loader source-map-loader
 5. npm link typescript
 6. npm --save install office-ui-fabric-react
+7. npm install sp-pnp-js --save
 
 
 # Execute
 Either run webpack or npm run build and open index.html in a browser of your choice
+
+# Run Locale Webserver

@@ -14,8 +14,9 @@
     "@types/react-dom": "^0.14.19",
     "office-ui-fabric-react": "^0.78.2",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
-   },
+    "react-dom": "^15.4.1",
+    "sp-pnp-js": "^1.0.6"
+  },
   "devDependencies": {
     "copyfiles": "^1.0.0",
     "css-loader": "^0.26.0",
