@@ -11,6 +11,7 @@ dist
 lib
 solution
 temp
+typings
 *.spapp
 
 # Coverage directory used by tools like istanbul
@@ -30,3 +31,6 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+#VS Code
+.vscode
