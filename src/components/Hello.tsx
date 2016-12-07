@@ -24,8 +24,8 @@ export class Hello extends React.Component<HelloProps, {}> {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           url: 'http://bing.com',
-          previewImageSrc: './images/document-preview.png',
-          iconSrc: './images/icon-ppt.png',
+          previewImageSrc: 'http://localhost:8080/images/document-preview.png',
+          iconSrc: 'http://localhost:8080/images/icon-ppt.png',
           width: 318,
           height: 196,
           accentColor: '#ce4b1f'
@@ -35,9 +35,13 @@ export class Hello extends React.Component<HelloProps, {}> {
 
     this._renderListAsync();
 
+    let divStyle = {
+        margin: "25px",
+    }
+
     return <div>   
                 <h1>Hi from {this.props.compiler} and {this.props.framework}!</h1>
-                <h1>drive kusi drive!<i className="ms-Icon ms-Icon--Car" aria-hidden="true"></i></h1>
+                <h1>fly kusi fly!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
                 <div>
                     <DocumentCard onClickHref='http://bing.com'>
                         <DocumentCardPreview { ...previewProps } />
@@ -48,7 +52,7 @@ export class Hello extends React.Component<HelloProps, {}> {
                                 activity='Created a few minutes ago'
                                 people={
                                 [
-                                    { name: 'Annie Lindqvist', profileImageSrc: './images/avatar-kat.png' }
+                                    { name: 'Annie Lindqvist', profileImageSrc: 'http://localhost:8080/images/avatar-kat.png' }
                                 ]
                             }
                         />
@@ -68,7 +72,7 @@ export class Hello extends React.Component<HelloProps, {}> {
         } else {
             // SharePoint
             SharepointListClient.get("").then((response) =>{
-                this._renderList(response.value);
+                this._renderList(response);
             });
         } 
     }
