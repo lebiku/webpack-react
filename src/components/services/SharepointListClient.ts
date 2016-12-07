@@ -17,10 +17,6 @@ export default class SharepointListClient {
 
             let items: ISPList[] = [];
 
-        //itresponse.forEach(function (item) {
-        //    html += "\n            <ul class=\"\">\n                <li class=\"\">\n                    <span class=\"ms-font-l\">" + item.Title + "</span>\n                </li>\n            </ul>";
-        //});
-
             response.forEach(function (item: any){
 
                 items.push({ Title: item.Title, Id: item.Id });
