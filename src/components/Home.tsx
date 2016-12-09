@@ -41,7 +41,7 @@ export class Home extends React.Component<HomeProps, {}> {
 
     return <div>   
                 <h1 className="myRed">Hi from {this.props.compiler} and {this.props.framework}!</h1>
-                <h1>fly kusi fly!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
+                <h1>Fly kusi Fly!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
                 <div>
                     <DocumentCard onClickHref='http://bing.com'>
                         <DocumentCardPreview { ...previewProps } />
