@@ -2,10 +2,9 @@
   "name": "react_webpack",
   "version": "1.0.0",
   "description": "React Webpack example",
-  "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "copy": "copyfiles -f ./index.html dist/",
+    "copy": "copyfiles -f ./index.html dist",
     "server": "webpack-dev-server --progress --inline",
     "launch": "start http://localhost:3000/",
     "start": "npm-run-all copy launch server",

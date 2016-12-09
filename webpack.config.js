@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+    debug: true,
     entry: "./src/index.tsx",
     output: {
         filename: "bundle.js",
@@ -10,7 +11,7 @@ module.exports = {
 
     // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
-
+    target: "web",
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".css"]
