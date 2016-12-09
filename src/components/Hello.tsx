@@ -24,8 +24,8 @@ export class Hello extends React.Component<HelloProps, {}> {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           url: 'http://bing.com',
-          previewImageSrc: 'http://localhost:8080/images/document-preview.png',
-          iconSrc: 'http://localhost:8080/images/icon-ppt.png',
+          previewImageSrc: 'http://localhost:3000/images/document-preview.png',
+          iconSrc: 'http://localhost:3000/images/icon-ppt.png',
           width: 318,
           height: 196,
           accentColor: '#ce4b1f'
@@ -52,7 +52,7 @@ export class Hello extends React.Component<HelloProps, {}> {
                                 activity='Created a few minutes ago'
                                 people={
                                 [
-                                    { name: 'Annie Lindqvist', profileImageSrc: 'http://localhost:8080/images/avatar-kat.png' }
+                                    { name: 'Annie Lindqvist', profileImageSrc: 'http://localhost:3000/images/avatar-kat.png' }
                                 ]
                             }
                         />

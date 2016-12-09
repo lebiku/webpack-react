@@ -2,6 +2,7 @@ import { ISPLists } from './SPLists';
 import { ISPList } from './SPLists';
 import * as pnp from 'sp-pnp-js';
 import { Promise } from 'core-js';
+import 'isomorphic-fetch';
 
 export default class SharepointListClient {
   
