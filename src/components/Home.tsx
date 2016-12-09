@@ -14,9 +14,9 @@ import { ISPLists, ISPList } from './services/SPLists';
 import MockHttpClient from './services/MockHttpClient';
 import SharepointListClient from './services/SharepointListClient';
 
-export interface HelloProps { compiler: string; framework: string; }
+export interface HomeProps { compiler: string; framework: string; }
 
-export class Hello extends React.Component<HelloProps, {}> {
+export class Home extends React.Component<HomeProps, {}> {
     render() {
 
     let previewProps: IDocumentCardPreviewProps = {
@@ -40,7 +40,7 @@ export class Hello extends React.Component<HelloProps, {}> {
     }
 
     return <div>   
-                <h1>Hi from {this.props.compiler} and {this.props.framework}!</h1>
+                <h1 className="myRed">Hi from {this.props.compiler} and {this.props.framework}!</h1>
                 <h1>fly kusi fly!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
                 <div>
                     <DocumentCard onClickHref='http://bing.com'>
