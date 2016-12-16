@@ -16,7 +16,8 @@ The toolchain decisions are critical. Consider it as a checklist or receipt and 
 git clone the current repository.
 
 1. Run `npm install` (This installs the required node modules)
-2. Run eiter
+2. Run `npm link typescript`
+3. Run eiter
  1. `npm start` to launch the application with a browser window.
  2. `npm run no-browser` to start the application on localhost without launching a browser window.
 
