@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "React Webpack example",
   "scripts": {
+    "lint": "tslint ./src/**/*.ts -t verbose",
     "build": "webpack --config webpack.config.js",
     "copy": "copyfiles -f ./index.html dist",
     "server": "webpack-dev-server --progress --inline",
     "launch": "start http://localhost:3000/",
-    "start": "npm-run-all copy launch server",
+    "start": "npm-run-all lint copy launch server",
     "no-browser": "npm-run-all copy server"
   },
   "author": "Markus Wälchli",
@@ -31,6 +32,8 @@
     "sp-pnp-js": "^1.0.6",
     "style-loader": "^0.13.1",
     "ts-loader": "^1.2.2",
+    "tslint": "^4.1.1",
+    "typescript": "^2.1.4",
     "webpack-dev-server": "^1.9.0"
   }
 }

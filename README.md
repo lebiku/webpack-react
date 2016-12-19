@@ -31,6 +31,7 @@ git clone the current repository.
 5. `npm link typescript`
 6. `npm install --save-dev office-ui-fabric-react`
 7. `npm install --save-dev sp-pnp-js` 
+8. `npm install -g tslint`
 
 
 # Execute

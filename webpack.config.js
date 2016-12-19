@@ -1,5 +1,5 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require("path");
+var webpack = require("webpack");
 
 module.exports = {
     debug: true,
@@ -33,7 +33,7 @@ module.exports = {
 
     plugins:[
       new webpack.ProvidePlugin({
-        Promise: 'bluebird'
+        Promise: "bluebird"
       }),
 
       new webpack.NormalModuleReplacementPlugin(/es6-promise$/, 'bluebird'),
