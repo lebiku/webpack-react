@@ -31,6 +31,14 @@ module.exports = {
         ]
     },
 
+    plugins:[
+      new webpack.ProvidePlugin({
+        Promise: 'bluebird'
+      }),
+
+      new webpack.NormalModuleReplacementPlugin(/es6-promise$/, 'bluebird'),
+    ],
+
     // webpack dev server configuration
     devServer: {
         contentBase: "./dist",

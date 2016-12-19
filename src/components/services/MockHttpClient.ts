@@ -1,7 +1,5 @@
 import { ISPList } from './SPLists';
 
-import * as Promise from "bluebird";
-
 export default class MockHttpClient {
 
     private static _items: ISPList[] = [{ Title: 'Mock List', Id: '1' }, {Title: 'Mock List 2', Id: '2' }];

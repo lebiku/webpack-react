@@ -2,14 +2,15 @@ import { ISPLists } from './SPLists';
 import { ISPList } from './SPLists';
 import * as pnp from 'sp-pnp-js';
 
-import * as Promise from "bluebird";
+import 'whatwg-fetch';
 
 export default class SharepointListClient {
 
   public static get(restUrl: string, options?: any): Promise<ISPList[]> {
 
-    return new Promise<ISPList[]>((resolve) => {
+    return new Promise<ISPList[]>((resolve: any) => {
 
+      
       pnp.setup({
         headers: {
           "Accept": "application/json; odata=verbose",
