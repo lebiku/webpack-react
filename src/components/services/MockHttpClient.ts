@@ -1,7 +1,6 @@
 import { ISPList } from './SPLists';
-import {Promise} from 'core-js';
 
-//import Promise = require("bluebird");
+import * as Promise from "bluebird";
 
 export default class MockHttpClient {
 

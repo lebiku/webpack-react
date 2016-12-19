@@ -1,14 +1,14 @@
 import {
-    DocumentCard,
-    DocumentCardPreview,
-    DocumentCardTitle,
-    DocumentCardActivity,
-    IDocumentCardPreviewProps
+  DocumentCard,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  DocumentCardActivity,
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 
 import * as React from 'react';
 //import { css } from 'office-ui-fabric-react';
-import 'office-ui-fabric-react/dist/css/fabric.min.css' 
+import 'office-ui-fabric-react/dist/css/fabric.min.css'
 
 import { ISPLists, ISPList } from './services/SPLists';
 import MockHttpClient from './services/MockHttpClient';
@@ -17,7 +17,7 @@ import SharepointListClient from './services/SharepointListClient';
 export interface HomeProps { compiler: string; framework: string; }
 
 export class Home extends React.Component<HomeProps, {}> {
-    render() {
+  render() {
 
     let previewProps: IDocumentCardPreviewProps = {
       previewImages: [
@@ -36,67 +36,66 @@ export class Home extends React.Component<HomeProps, {}> {
     this._renderListAsync();
 
     let divStyle = {
-        margin: "25px",
+      margin: "25px",
     }
 
-    return <div>   
-                <h1 className="myRed">Hi from {this.props.compiler} and {this.props.framework}!</h1>
-                <h1>Fly kusi Fly!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
-                <div>
-                    <DocumentCard onClickHref='http://bing.com'>
-                        <DocumentCardPreview { ...previewProps } />
-                        <DocumentCardTitle
-                            title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
-                            shouldTruncate={ true } />
-                            <DocumentCardActivity
-                                activity='Created a few minutes ago'
-                                people={
-                                [
-                                    { name: 'Annie Lindqvist', profileImageSrc: 'http://localhost:3000/images/avatar-kat.png' }
-                                ]
-                            }
-                        />
-                    </DocumentCard>
-                </div> 
-                <div id="spListContainer" />
-            </div>;
-    }
+    return <div>
+      <h1 className="myRed">Run kusi run!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
+      <div>
+        <DocumentCard onClickHref='http://bing.com'>
+          <DocumentCardPreview { ...previewProps } />
+          <DocumentCardTitle
+            title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
+            shouldTruncate={true} />
+          <DocumentCardActivity
+            activity='Created a few minutes ago'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: 'http://localhost:3000/images/avatar-kat.png' }
+              ]
+            }
+            />
+        </DocumentCard>
+      </div>
+      <div id="spListContainer" />
+    </div>;
+  }
 
-    private _renderListAsync(): void {
+  private _renderListAsync(): void {
     // Local environment
-        if (typeof _spBodyOnLoadFunctionNames === 'undefined') {
-            // no SharePoint
-            this._getMockListData().then((response) => {
-                this._renderList(response.value);
-            }); 
-        } else {
-            // SharePoint
-            SharepointListClient.get("").then((response) =>{
-                this._renderList(response);
-            });
-        } 
+    if (typeof _spBodyOnLoadFunctionNames === 'undefined') {
+      // no SharePoint
+      this._getMockListData().then((response) => {
+        this._renderList(response.value);
+      });
+    } else {
+      // SharePoint
+      SharepointListClient.get("").then((response) => {
+        this._renderList(response);
+      });
     }
+  }
 
-    private _getMockListData(): Promise<ISPLists> {
+  private _getMockListData(): Promise<ISPLists> {
     return MockHttpClient.get("mockUrl")
-        .then((data: ISPList[]) => {
-             var listData: ISPLists = { value: data };
-             return listData;
-         }) as Promise<ISPLists>;
-    }
+      .then((data: ISPList[]) => {
+        var listData: ISPLists = { value: data };
+        return listData;
+      }) as Promise<ISPLists>;
+  }
 
-    private _renderList(items: ISPList[]): void {
-        let html: string = '';
-        items.forEach((item: ISPList) => {
-            html += `
+  private _renderList(items: ISPList[]): void {
+    let html: string = '';
+    items.forEach((item: ISPList) => {
+      html += `
             <ul class="">
                 <li class="">
                     <span class="ms-font-l">${item.Title}</span>
                 </li>
             </ul>`;
-        });
-        
-        let listContainer = document.getElementById('spListContainer');
-        listContainer.innerHTML = html;
-    }
+    });
+
+    let listContainer = document.getElementById('spListContainer');
+    listContainer.innerHTML = html;
+  }
 }
