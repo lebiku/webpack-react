@@ -4,9 +4,12 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     debug: true,
-    entry: "./src/index.tsx",
+    entry: {
+        main: path.resolve(__dirname, "src/index.tsx"),
+        vendor: path.resolve(__dirname, "src/vendor.tsx")
+    },
     output: {
-        filename: "bundle.min.js",
+        filename: "[name].js",
         path: path.resolve("dist")
     },
 
@@ -33,9 +36,24 @@ module.exports = {
     },
 
     plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+          name: 'vendor'
+      }),
       new HtmlWebpackPlugin({
-          template: "src/index.html",
-          inject: true
+            template: "src/index.html",
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeRedundantAttributes: true,
+                useShortDoctype: true,
+                removeEmptyAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                keepClosingSlash: true,
+                minifyJS: true,
+                minifyCSS: true,
+                minifyURLs: true
+            },
+            inject: true
       }),  
       new webpack.DefinePlugin({
         'process.env': {
@@ -43,7 +61,11 @@ module.exports = {
         }
       }),  
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.UglifyJsPlugin({
+          compress: {
+              warnings: false
+          }
+      }),
       new webpack.optimize.AggressiveMergingPlugin(),
       new webpack.ProvidePlugin({
         Promise: "bluebird"
