@@ -1,11 +1,3 @@
-import {
-  DocumentCard,
-  DocumentCardPreview,
-  DocumentCardTitle,
-  DocumentCardActivity,
-  IDocumentCardPreviewProps
-} from "office-ui-fabric-react/lib/DocumentCard";
-
 import * as React from "react";
 // import { css } from 'office-ui-fabric-react';
 import "office-ui-fabric-react/dist/css/fabric.min.css";
