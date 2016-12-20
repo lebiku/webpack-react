@@ -9,7 +9,9 @@
     "server": "webpack-dev-server --progress --inline",
     "launch": "start http://localhost:3000/",
     "start": "npm-run-all lint launch server",
-    "no-browser": "npm-run-all server"
+    "no-browser": "npm-run-all server",
+    "predist": "set NODE_ENV=production",
+    "dist": "webpack -p --config ./webpack.config.prod.js" 
   },
   "author": "Markus Wälchli",
   "license": "ISC",

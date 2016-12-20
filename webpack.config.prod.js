@@ -5,12 +5,12 @@ module.exports = {
     debug: true,
     entry: "./src/index.tsx",
     output: {
-        filename: "bundle.js",
-        path: path.resolve("src")
+        filename: "bundle.min.js",
+        path: path.resolve("dist")
     },
 
     // Enable sourcemaps for debugging webpack's output.
-    devtool: "inline-source-map",
+    devtool: "source-map",
     target: "web",
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
@@ -32,18 +32,14 @@ module.exports = {
     },
 
     plugins: [
+      // new webpack.optimize.CommonsChunkPlugin("common.js"),
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.AggressiveMergingPlugin(),
       new webpack.ProvidePlugin({
         Promise: "bluebird"
       }),
 
       new webpack.NormalModuleReplacementPlugin(/es6-promise$/, "bluebird"),
-    ],
-
-    // webpack dev server configuration
-    devServer: {
-        contentBase: "./src",
-        noInfo: false,
-        inline: true,
-        port: 3000
-    },
+    ]
 };

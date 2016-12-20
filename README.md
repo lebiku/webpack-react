@@ -21,6 +21,8 @@ git clone the current repository.
  1. `npm start` to launch the application with a browser window.
  2. `npm run no-browser` to start the application on localhost without launching a browser window.
 
+# Production build
+Having successfully run the application you can build the app for production by running `npm run dist`. this will ouput the minified bundle.js 
 
 # Initial Configruation 
 
