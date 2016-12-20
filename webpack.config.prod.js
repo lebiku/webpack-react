@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     debug: true,
@@ -24,7 +25,7 @@ module.exports = {
     module: {
         loaders: [
             // load css and process sass
-            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap') },
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" }
         ],
@@ -36,6 +37,7 @@ module.exports = {
     },
 
     plugins: [
+      new ExtractTextPlugin('[name].css'),
       new webpack.optimize.CommonsChunkPlugin({
           name: 'vendor'
       }),

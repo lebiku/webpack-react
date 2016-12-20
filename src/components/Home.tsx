@@ -13,12 +13,8 @@ export class Home extends React.Component<HomeProps, {}> {
 
     this._renderListAsync();
 
-    let divStyle = {
-      margin: "25px",
-    };
-
     return <div>
-      <h1 className="myRed">Run kusi run!<i className="ms-Icon ms-Icon--Airplane" style={divStyle} aria-hidden="true"></i></h1>
+      <h1 className="myRed">Run kusi run!<i className="ms-Icon ms-Icon--Airplane myIcon" aria-hidden="true"></i></h1>
       <div id="spListContainer" />
     </div>;
   }
@@ -50,7 +46,7 @@ export class Home extends React.Component<HomeProps, {}> {
     let html: string = "";
     items.forEach((item: ISPList) => {
       html += `
-            <ul class="">
+            <ul class="myList">
                 <li class="">
                     <span class="ms-font-l">${item.Title}</span>
                 </li>

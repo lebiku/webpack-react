@@ -1,3 +1,15 @@
-.myRed{
+.myRed {
   color: blue !important;
+}
+
+.myIcon {
+  margin: 25px;
+}
+
+ul.myList {
+  list-style-type: none;
+}
+
+ul.myList li {
+  background-color: #F5F5F5;
 }
