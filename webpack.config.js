@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     debug: true,
@@ -32,18 +33,13 @@ module.exports = {
     },
 
     plugins: [
-      new webpack.ProvidePlugin({
-        Promise: "bluebird"
-      }),
-
-      new webpack.NormalModuleReplacementPlugin(/es6-promise$/, "bluebird"),
-    ],
-
-    // webpack dev server configuration
-    devServer: {
-        contentBase: "./src",
-        noInfo: false,
-        inline: true,
-        port: 3000
-    },
+        new HtmlWebpackPlugin({
+            template: "src/index.html",
+            inject: true
+        }),  
+        new webpack.ProvidePlugin({
+            Promise: "bluebird"
+        }),
+        new webpack.NormalModuleReplacementPlugin(/es6-promise$/, "bluebird"),
+    ]
 };

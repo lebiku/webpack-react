@@ -22,21 +22,4 @@ git clone the current repository.
  2. `npm run no-browser` to start the application on localhost without launching a browser window.
 
 # Production build
-Having successfully run the application you can build the app for production by running `npm run dist`. this will ouput the minified bundle.js 
-
-# Initial Configruation 
-
-1. Clone this repository
-2. `npm install -g typescript webpack`
-3. `npm install --save react react-dom @types/react @types/react-dom`
-4. `npm install --save-dev ts-loader source-map-loader`
-5. `npm link typescript`
-6. `npm install --save-dev office-ui-fabric-react`
-7. `npm install --save-dev sp-pnp-js` 
-8. `npm install -g tslint`
-
-
-# Execute
-Either run webpack or npm run build and open index.html in a browser of your choice
-
-# Run Locale Webserver
+Having successfully run the application you can build the app for production by running `npm run dist`. this will ouput the minified bundle.js

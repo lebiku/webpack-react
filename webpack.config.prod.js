@@ -1,5 +1,6 @@
 var path = require("path");
 var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     debug: true,
@@ -32,7 +33,15 @@ module.exports = {
     },
 
     plugins: [
-      // new webpack.optimize.CommonsChunkPlugin("common.js"),
+      new HtmlWebpackPlugin({
+          template: "src/index.html",
+          inject: true
+      }),  
+      new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: JSON.stringify('production')
+        }
+      }),  
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
