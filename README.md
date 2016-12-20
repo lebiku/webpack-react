@@ -24,3 +24,8 @@ git clone the current repository.
 
 # Production build
 Having successfully run the application you can build the app for production by running `npm run dist`. this will create the minified Javascript and CSS files.
+
+# Use project as Boilerplate
+Clone and rename the project to meet your goals:
+
+run `git clone https://github.com/lebiku/webpack-react.git {yourprojectname}`
