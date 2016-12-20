@@ -8,8 +8,8 @@
     "copy": "copyfiles -f ./index.html dist",
     "server": "webpack-dev-server --progress --inline",
     "launch": "start http://localhost:3000/",
-    "start": "npm-run-all lint copy launch server",
-    "no-browser": "npm-run-all copy server"
+    "start": "npm-run-all lint launch server",
+    "no-browser": "npm-run-all server"
   },
   "author": "Markus Wälchli",
   "license": "ISC",
