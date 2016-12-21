@@ -36,10 +36,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "src/index.html",
             inject: true
-        }),  
+        }),
         new webpack.ProvidePlugin({
             Promise: "bluebird"
         }),
-        new webpack.NormalModuleReplacementPlugin(/es6-promise$/, "bluebird"),
+        new webpack.NormalModuleReplacementPlugin(/es6-promise$/, "bluebird")
     ]
 };

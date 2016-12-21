@@ -37,9 +37,9 @@ module.exports = {
     },
 
     plugins: [
-      new ExtractTextPlugin('[name].css'),
+      new ExtractTextPlugin("[name].css"),
       new webpack.optimize.CommonsChunkPlugin({
-          name: 'vendor'
+          name: "vendor"
       }),
       new HtmlWebpackPlugin({
             template: "src/index.html",
@@ -56,12 +56,12 @@ module.exports = {
                 minifyURLs: true
             },
             inject: true
-      }),  
+      }),
       new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify('production')
+        "process.env": {
+            NODE_ENV: JSON.stringify("production")
         }
-      }),  
+      }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
           compress: {
