@@ -3,9 +3,9 @@ import "./index.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Home } from "./components/Home";
+import { Sites } from "./components/SitesWebpart";
 
 ReactDOM.render(
-    <Home compiler="TypeScript" framework="React" />,
+    <Sites />,
     document.getElementById("app-entry-point")
 );

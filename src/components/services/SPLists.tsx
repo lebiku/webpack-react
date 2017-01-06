@@ -1,8 +1,9 @@
-export interface ISPLists {
-    value: ISPList[];
+export interface ISitesList {
+    value: ISitesListItem[];
 }
 
-export interface ISPList {
+export interface ISitesListItem {
     Title: string;
-    Id: string;
+    Url: string;
+    favourite: boolean;
 }

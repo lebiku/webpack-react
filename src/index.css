@@ -1,15 +1,23 @@
-.myRed {
-  color: blue !important;
+.sitesWebpart{
+  min-width: 300px;
 }
 
-.myIcon {
-  margin: 25px;
+.listAction{
+  float: right;
+  margin-right: 15px;
 }
 
-ul.myList {
-  list-style-type: none;
+.sitesLink{
+  text-decoration: none;
+  color: #000;
 }
 
-ul.myList li {
-  background-color: #F5F5F5;
+.sitesItem:hover{
+  background-color: #eaeaea;
+}
+
+.ms-Pivot.ms-Pivot--tabs .ms-Pivot-link.is-selected,
+.ms-Pivot-link:active,
+.ms-Pivot-link.is-selected::before {
+  background-color: #ff8c00 !important;
 }
