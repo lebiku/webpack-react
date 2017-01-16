@@ -20,8 +20,8 @@ export default class SitesClient {
            data.then(result => {
              let items: ISitesListItem[] = [];
 
-             result.d.Followed.results.forEach(function (item: any, index: string) {
-               items.push({ Title: item.Name, Url: item.ContentUri, favourite: true });
+             result.d.Followed.results.forEach(function (item: any, index: number) {
+               items.push({ Id: index, Title: item.Name, Url: item.ContentUri, favourite: true });
              });
 
              resolve(items);

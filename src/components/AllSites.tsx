@@ -11,6 +11,7 @@ import { getRTL } from "office-ui-fabric-react/lib/utilities/rtl";
 import { ISitesList, ISitesListItem } from "./services/SPLists";
 import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
+import * as update from  "immutability-helper";
 
 // export interface IListBasicExampleProps {
 //   items: any[];
@@ -31,7 +32,7 @@ export class Sites extends React.Component<any, any> {
     this.state = {
       filterText: "",
       items: [],
-      allItems: []
+      allItems: [],
     };
   }
 
@@ -46,26 +47,28 @@ export class Sites extends React.Component<any, any> {
 
     return (
       <div>
-        <FocusZone direction={FocusZoneDirection.vertical}>
         <TextField label={"Suchbegriff eingeben: " + resultCountText} onBeforeChange={this._onFilterChanged} />
         <List
           items={items}
-          onRenderCell={(item: any, index: any) => (
-            <div className="ms-font-l sitesItem" data-is-focusable={true}>
+          onRenderCell={(item: any) => (
+            <div className="ms-font-l sitesItem">
               <a href={item.Url} className="sitesLink">{item.Title}</a>
-              <a onClick={this._onLinkClick.bind(this, item)} className="listAction">{this._getFavouriteStatus(item)}</a>
+              <a onClick={this._updateFavouriteState.bind(this, item)} className="listAction">{this._getFavouriteStatus(item)}</a>
             </div>
           )}
           />
-          </FocusZone>
       </div>
     );
   }
 
-  public _onLinkClick(item: ISitesListItem): void {
-    let postfix = item.favourite ? "I like " : "Not yet liked ";
+  public _updateFavouriteState(item: ISitesListItem): void {
 
-    alert(postfix + "'" + item.Title + "'");
+    let index = item.Id;
+    // Todo: call Rest API to add Favourite
+
+     this.setState({
+       items: update(this.state.items, { [index]: {favourite: {$set: !item.favourite}}})
+     });
   }
 
   private _onFilterChanged(text: string) {
@@ -111,7 +114,7 @@ export class Sites extends React.Component<any, any> {
     this.setState({
       filterText: "",
       items: items,
-      allItems: items
+      allItems: items,
     });
   }
 }
