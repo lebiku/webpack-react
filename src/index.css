@@ -22,3 +22,26 @@
 .ms-Pivot-link.is-selected::before {
   background-color: #ff8c00 !important;
 }
+
+.view-container {
+}
+
+.view-actions {
+  margin-top: 30px;
+}
+
+.show-all {
+  float: right;
+  margin-right: 30px;
+}
+
+.pin-tab {
+  margin-right: 5px;
+  margin-top: -30px;
+  float: right;
+  cursor: pointer;
+}
+
+.ms-FocusZone{
+  margin-right: 30px;
+}

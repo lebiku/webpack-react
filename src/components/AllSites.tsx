@@ -13,16 +13,6 @@ import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
 import * as update from  "immutability-helper";
 
-// export interface IListBasicExampleProps {
-//   items: any[];
-// }
-
-export interface IListBasicExampleState {
-  filterText?: string;
-  items?: any[];
-  allItems?: any[];
-}
-
 export class Sites extends React.Component<any, any> {
   constructor() {
     super();
@@ -46,7 +36,7 @@ export class Sites extends React.Component<any, any> {
     let resultCountText = items.length === allItems.length ? "" : ` (${items.length} of ${allItems.length} shown)`;
 
     return (
-      <div>
+      <div className="view-container">
         <TextField label={"Suchbegriff eingeben: " + resultCountText} onBeforeChange={this._onFilterChanged} />
         <List
           items={items}
@@ -57,6 +47,9 @@ export class Sites extends React.Component<any, any> {
             </div>
           )}
           />
+          <div className="view-actions">
+            <a href="#" className="show-all">alle anzeigen</a>
+          </div>
       </div>
     );
   }
