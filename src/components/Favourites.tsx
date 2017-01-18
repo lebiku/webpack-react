@@ -1,7 +1,5 @@
 import * as React from "react";
 import {
-  FocusZone,
-  FocusZoneDirection,
   TextField,
   List
 } from "office-ui-fabric-react";
@@ -13,7 +11,7 @@ import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
 import * as update from  "immutability-helper";
 
-export class Sites extends React.Component<any, any> {
+export class Favourites extends React.Component<any, any> {
   constructor() {
     super();
 
@@ -43,7 +41,7 @@ export class Sites extends React.Component<any, any> {
           onRenderCell={(item: any) => (
             <div className="ms-font-l sitesItem">
               <a href={item.Url} className="sitesLink">{item.Title}</a>
-              <a onClick={this._updateFavouriteState.bind(this, item)} className="listAction">{this._getFavouriteStatus(item)}</a>
+              <a onClick={this._removeFavourite.bind(this, item)} className="listAction"><i className="ms-Icon ms-Icon--Cancel ms-fontColor-black ms-fontColor-white--hover"></i></a>
             </div>
           )}
           />
@@ -54,14 +52,16 @@ export class Sites extends React.Component<any, any> {
     );
   }
 
-  public _updateFavouriteState(item: ISitesListItem): void {
+  public _removeFavourite(item: ISitesListItem): void {
 
-    let index = item.Id;
-    // Todo: call Rest API to add Favourite
+    // Todo: call Rest API to remove Favourite
+    let { items } = this.state;
+    let indexOfItem = items.indexOf(item);
 
-     this.setState({
-       items: update(this.state.items, { [index]: {favourite: {$set: !item.favourite}}})
-     });
+    this.setState({
+       items: update(this.state.items, {$splice: [[indexOfItem, 1]]}),
+       allItems: update(this.state.items, {$splice: [[indexOfItem, 1]]}),
+    });
   }
 
   private _onFilterChanged(text: string) {
@@ -73,12 +73,6 @@ export class Sites extends React.Component<any, any> {
         allItems.filter((item: any) => item.Title.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
         allItems
     });
-  }
-
-  private _getFavouriteStatus(item: ISitesListItem): JSX.Element {
-    return item.favourite ?
-      <i className="ms-Icon ms-Icon--HeartFill ms-fontColor-red ms-fontColor-white--hover"></i> :
-      <i className="ms-Icon ms-Icon--Heart ms-fontColor-red ms-fontColor-white--hover"></i>;
   }
 
   private _renderListAsync(): void {

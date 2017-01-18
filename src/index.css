@@ -13,8 +13,18 @@
   color: #000;
 }
 
+.sitesWebpart a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
 .sitesItem:hover{
-  background-color: #eaeaea;
+  background: rgba(250, 140, 0, 0.4);
+}
+
+.sitesWebpart a:hover {
+  text-decoration: none;
+  color: #fff;
 }
 
 .ms-Pivot.ms-Pivot--tabs .ms-Pivot-link.is-selected,
@@ -24,6 +34,7 @@
 }
 
 .view-container {
+  margin: 30px 15px;
 }
 
 .view-actions {
@@ -37,7 +48,7 @@
 
 .pin-tab {
   margin-right: 5px;
-  margin-top: -30px;
+  margin-top: -60px;
   float: right;
   cursor: pointer;
 }

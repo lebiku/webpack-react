@@ -9,6 +9,8 @@ import {
 
 import "office-ui-fabric-react/dist/css/fabric.min.css";
 import { Sites } from "./AllSites";
+import { Favourites } from "./Favourites";
+import { RecentlyChanged } from "./RecentlyChanged";
 
 export const SelectedTabKey = "SelectedTabKey";
 
@@ -37,11 +39,11 @@ export class Tabs extends React.Component<any, any> {
             </PivotItem>
             <PivotItem itemKey="favs" linkText="Favoriten">
               <i className={this._getPinnedIcon("favs")} aria-hidden="true" onClick={this._onTabPinned}></i>
-              <Label>Pivot #2</Label>
+              <Favourites />
             </PivotItem>
             <PivotItem itemKey="recentlyUsed" linkText="Kürzlich verwendet">
               <i className={this._getPinnedIcon("recentlyUsed")} aria-hidden="true" onClick={this._onTabPinned}></i>
-              <Label>Pivot #3</Label>
+              < RecentlyChanged />
             </PivotItem>
         </Pivot></div>
     );
