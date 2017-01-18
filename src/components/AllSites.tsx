@@ -48,7 +48,7 @@ export class Sites extends React.Component<any, any> {
           )}
           />
           <div className="view-actions">
-            <a href="#" className="show-all">alle anzeigen</a>
+            <span className="show-all">alle anzeigen</span>
           </div>
       </div>
     );

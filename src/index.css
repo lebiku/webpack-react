@@ -1,5 +1,5 @@
 .sitesWebpart{
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .listAction{
@@ -44,6 +44,8 @@
 .show-all {
   float: right;
   margin-right: 30px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .pin-tab {

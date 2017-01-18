@@ -36,6 +36,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.24.1",
     "http-server": "^0.9.0",
+    "localtunnel": "^1.8.2",
     "npm-run-all": "^3.1.2",
     "office-ui-fabric-react": "^0.78.2",
     "rimraf": "^2.5.4",

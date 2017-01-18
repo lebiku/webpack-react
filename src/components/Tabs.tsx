@@ -31,7 +31,6 @@ export class Tabs extends React.Component<any, any> {
 
   public render() {
     return (
-        <div>
         <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } initialSelectedKey={this.selectedTab} onLinkClick={ this._onTabSelected }>
             <PivotItem itemKey="allItems" linkText="Alle">
               <i className={this._getPinnedIcon("allItems")} aria-hidden="true" onClick={this._onTabPinned}></i>
@@ -45,7 +44,7 @@ export class Tabs extends React.Component<any, any> {
               <i className={this._getPinnedIcon("recentlyUsed")} aria-hidden="true" onClick={this._onTabPinned}></i>
               < RecentlyChanged />
             </PivotItem>
-        </Pivot></div>
+        </Pivot>
     );
   }
 
