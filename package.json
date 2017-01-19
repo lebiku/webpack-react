@@ -41,7 +41,6 @@
     "office-ui-fabric-react": "^0.78.2",
     "rimraf": "^2.5.4",
     "source-map-loader": "^0.1.5",
-    "sp-pnp-js": "^1.0.6",
     "style-loader": "^0.13.1",
     "ts-loader": "^1.2.2",
     "tslint": "^4.1.1",

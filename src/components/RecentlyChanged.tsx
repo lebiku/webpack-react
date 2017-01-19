@@ -3,7 +3,6 @@ import {
   List
 } from "office-ui-fabric-react";
 import { css } from "office-ui-fabric-react/lib/utilities/css";
-import { getRTL } from "office-ui-fabric-react/lib/utilities/rtl";
 
 import { ISitesList, ISitesListItem } from "./services/SPLists";
 import MockSites from "./services/MockSitesClient";
