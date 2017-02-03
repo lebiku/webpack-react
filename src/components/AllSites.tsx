@@ -12,6 +12,8 @@ import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
 import * as update from  "immutability-helper";
 
+declare var siteType: number;
+
 export class Sites extends React.Component<any, any> {
   constructor() {
     super();
@@ -89,7 +91,17 @@ export class Sites extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      SitesClient.get("").then((response: any) => {
+      let siteKind = -1;
+
+      if (typeof siteType === "number") {
+        siteKind = siteType;
+      }
+
+      let endpoint = (siteKind === -1 ?
+          "/_vti_bin/CoopSiteService.svc/sites/siteType(4)/rowLimit(30)/filter(null)" :
+          "/_vti_bin/CoopSiteService.svc/sites/bySiteType(" + siteKind +  ")/rowLimit(30)/filter(null)");
+
+      SitesClient.get(endpoint, true).then((response: any) => {
         this._renderList(response);
       });
     }

@@ -47,7 +47,7 @@ export class RecentlyChanged extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      SitesClient.get("").then((response: any) => {
+      SitesClient.get("/_vti_bin/CoopSiteService.svc/mostRecentlyUsed", false).then((response: any) => {
         this._renderList(response);
       });
     }

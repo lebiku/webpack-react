@@ -8,7 +8,9 @@ import { css } from "office-ui-fabric-react/lib/utilities/css";
 import { ISitesList, ISitesListItem } from "./services/SPLists";
 import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
-import * as update from  "immutability-helper";
+import * as update from "immutability-helper";
+
+declare var siteType: number;
 
 export class Favourites extends React.Component<any, any> {
   constructor() {
@@ -43,10 +45,10 @@ export class Favourites extends React.Component<any, any> {
               <a onClick={this._removeFavourite.bind(this, item)} className="listAction"><i className="ms-Icon ms-Icon--Cancel ms-fontColor-black ms-fontColor-white--hover"></i></a>
             </div>
           )}
-          />
-          <div className="view-actions">
-            <span className="show-all">alle anzeigen</span>
-          </div>
+        />
+        <div className="view-actions">
+          <span className="show-all">alle anzeigen</span>
+        </div>
       </div>
     );
   }
@@ -54,12 +56,17 @@ export class Favourites extends React.Component<any, any> {
   public _removeFavourite(item: ISitesListItem): void {
 
     // Todo: call Rest API to remove Favourite
-    let { items } = this.state;
-    let indexOfItem = items.indexOf(item);
+    let endpoint = "/_vti_bin/CoopSiteService.svc/favorites/siteId(" + item.SiteId + ")";
+    SitesClient.delete(endpoint).then((success: boolean) => {
+      if (success) {
+        let { items } = this.state;
+        let indexOfItem = items.indexOf(item);
 
-    this.setState({
-       items: update(this.state.items, {$splice: [[indexOfItem, 1]]}),
-       allItems: update(this.state.items, {$splice: [[indexOfItem, 1]]}),
+        this.setState({
+          items: update(this.state.items, { $splice: [[indexOfItem, 1]] }),
+          allItems: update(this.state.items, { $splice: [[indexOfItem, 1]] }),
+        });
+      }
     });
   }
 
@@ -83,7 +90,17 @@ export class Favourites extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      SitesClient.get("").then((response: any) => {
+      let siteKind = -1;
+
+      if (typeof siteType === "number") {
+        siteKind = siteType;
+      }
+
+      let endpoint = (siteKind === -1 ?
+        "/_vti_bin/CoopSiteService.svc/favorites" :
+        "/_vti_bin/CoopSiteService.svc/favorites/bySiteType(" + siteKind + ")");
+
+      SitesClient.get(endpoint, false).then((response: any) => {
         this._renderList(response);
       });
     }

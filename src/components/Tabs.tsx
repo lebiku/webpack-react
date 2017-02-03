@@ -7,6 +7,8 @@ import {
   PivotLinkSize
 } from "office-ui-fabric-react";
 
+declare var siteType: any;
+
 import "office-ui-fabric-react/dist/css/fabric.min.css";
 import { Sites } from "./AllSites";
 import { Favourites } from "./Favourites";

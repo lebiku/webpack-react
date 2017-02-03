@@ -5,6 +5,7 @@ export interface ISitesList {
 export interface ISitesListItem {
     Id: number;
     Title: string;
+    SiteId: string;
     Url: string;
     favourite: boolean;
 }
