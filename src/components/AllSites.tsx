@@ -10,14 +10,18 @@ import { css } from "office-ui-fabric-react/lib/utilities/css";
 import { ISitesList, ISitesListItem } from "./services/SPLists";
 import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
-import * as update from  "immutability-helper";
+import * as update from "immutability-helper";
 
 declare var siteType: number;
 
 export class Sites extends React.Component<any, any> {
+
+  defaultSiteType: number;
+
   constructor() {
     super();
 
+    this.defaultSiteType = 10;
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
@@ -47,32 +51,79 @@ export class Sites extends React.Component<any, any> {
               <a onClick={this._updateFavouriteState.bind(this, item)} className="listAction">{this._getFavouriteStatus(item)}</a>
             </div>
           )}
-          />
-          <div className="view-actions">
-            <span className="show-all">alle anzeigen</span>
-          </div>
+        />
+        <div className="view-actions">
+          <span className="show-all" onClick={this._showAllSites.bind(this)}>alle anzeigen</span>
+        </div>
       </div>
     );
   }
 
   public _updateFavouriteState(item: ISitesListItem): void {
 
-    let index = item.Id;
-    // Todo: call Rest API to add Favourite
+    let endpoint = "/_vti_bin/CoopSiteService.svc/favorites/siteId(" + item.SiteId + ")";
 
-     this.setState({
-       items: update(this.state.items, { [index]: {favourite: {$set: !item.favourite}}})
-     });
+    if (item.favourite) {
+      SitesClient.delete(endpoint).then((success: boolean) => {
+        this._setFavouriteState(item, success);
+      });
+    } else {
+      SitesClient.post(endpoint).then((success: boolean) => {
+        this._setFavouriteState(item, success);
+      });
+    }
+  }
+
+  public _showAllSites(): void {
+
+    let siteKind = this.defaultSiteType;
+
+    if (typeof siteType === "number") {
+      siteKind = siteType;
+    }
+
+    let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(0)/filter(null)";
+
+    SitesClient.get(endpoint, true).then((response: any) => {
+      this._renderList(response);
+    });
+  }
+
+  private _setFavouriteState(item: ISitesListItem, success: boolean) {
+    if (success) {
+      let index = item.Id;
+      this.setState({
+        items: update(this.state.items, { [index]: { favourite: { $set: !item.favourite } } })
+      });
+    }
   }
 
   private _onFilterChanged(text: string) {
-    let { items, allItems } = this.state;
 
-    this.setState({
-      filterText: text,
-      items: text ?
-        allItems.filter((item: any) => item.Title.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
-        allItems
+    this._applyFilterOnList(text);
+
+    // let { items, allItems } = this.state;
+
+    // this.setState({
+    //   filterText: text,
+    //   items: text ?
+    //     allItems.filter((item: any) => item.Title.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
+    //     allItems
+    // });
+  }
+
+  private _applyFilterOnList(text: string): void {
+
+    let siteKind = this.defaultSiteType;
+
+    if (typeof siteType === "number") {
+      siteKind = siteType;
+    }
+
+    let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(" + (text === "" ? 30 : 0) + ")/filter(" + (text === "" ? null : text) + ")";
+
+    SitesClient.get(endpoint, true).then((response: any) => {
+      this._renderList(response);
     });
   }
 
@@ -91,15 +142,13 @@ export class Sites extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      let siteKind = -1;
+      let siteKind = 4;
 
       if (typeof siteType === "number") {
         siteKind = siteType;
       }
 
-      let endpoint = (siteKind === -1 ?
-          "/_vti_bin/CoopSiteService.svc/sites/siteType(4)/rowLimit(30)/filter(null)" :
-          "/_vti_bin/CoopSiteService.svc/sites/bySiteType(" + siteKind +  ")/rowLimit(30)/filter(null)");
+      let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(30)/filter(null)";
 
       SitesClient.get(endpoint, true).then((response: any) => {
         this._renderList(response);

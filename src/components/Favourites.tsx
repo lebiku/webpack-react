@@ -47,10 +47,20 @@ export class Favourites extends React.Component<any, any> {
           )}
         />
         <div className="view-actions">
-          <span className="show-all">alle anzeigen</span>
+          <span className="show-all" onClick={this._showAllSites.bind(this)}>alle anzeigen</span>
         </div>
       </div>
     );
+  }
+
+
+  public _showAllSites(): void {
+
+    let endpoint = "/_vti_bin/CoopSiteService.svc/favorites";
+
+    SitesClient.get(endpoint, false).then((response: any) => {
+      this._renderList(response);
+    });
   }
 
   public _removeFavourite(item: ISitesListItem): void {
@@ -90,15 +100,13 @@ export class Favourites extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      let siteKind = -1;
+      let siteKind = 10;
 
       if (typeof siteType === "number") {
         siteKind = siteType;
       }
 
-      let endpoint = (siteKind === -1 ?
-        "/_vti_bin/CoopSiteService.svc/favorites" :
-        "/_vti_bin/CoopSiteService.svc/favorites/bySiteType(" + siteKind + ")");
+      let endpoint = "/_vti_bin/CoopSiteService.svc/favorites/bySiteType(" + siteKind + ")";
 
       SitesClient.get(endpoint, false).then((response: any) => {
         this._renderList(response);
