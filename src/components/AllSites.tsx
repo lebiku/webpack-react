@@ -46,7 +46,7 @@ export class Sites extends React.Component<any, any> {
         <List
           items={items}
           onRenderCell={(item: any) => (
-            <div className="ms-font-l sitesItem">
+            <div className="ms-font-s-plus sitesItem">
               <a href={item.Url} className="sitesLink">{item.Title}</a>
               <a onClick={this._updateFavouriteState.bind(this, item)} className="listAction">{this._getFavouriteStatus(item)}</a>
             </div>
@@ -99,17 +99,7 @@ export class Sites extends React.Component<any, any> {
   }
 
   private _onFilterChanged(text: string) {
-
     this._applyFilterOnList(text);
-
-    // let { items, allItems } = this.state;
-
-    // this.setState({
-    //   filterText: text,
-    //   items: text ?
-    //     allItems.filter((item: any) => item.Title.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
-    //     allItems
-    // });
   }
 
   private _applyFilterOnList(text: string): void {
@@ -129,8 +119,8 @@ export class Sites extends React.Component<any, any> {
 
   private _getFavouriteStatus(item: ISitesListItem): JSX.Element {
     return item.favourite ?
-      <i className="ms-Icon ms-Icon--HeartFill ms-fontColor-red ms-fontColor-white--hover"></i> :
-      <i className="ms-Icon ms-Icon--Heart ms-fontColor-red ms-fontColor-white--hover"></i>;
+      <i className="ms-Icon ms-Icon--HeartFill ms-fontColor-black ms-fontColor-white--hover"></i> :
+      <i className="ms-Icon ms-Icon--Heart ms-fontColor-black ms-fontColor-white--hover"></i>;
   }
 
   private _renderListAsync(): void {
@@ -142,7 +132,7 @@ export class Sites extends React.Component<any, any> {
       });
     } else {
       // SharePoint
-      let siteKind = 4;
+      let siteKind = this.defaultSiteType;
 
       if (typeof siteType === "number") {
         siteKind = siteType;

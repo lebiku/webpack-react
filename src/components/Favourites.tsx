@@ -40,7 +40,7 @@ export class Favourites extends React.Component<any, any> {
         <List
           items={items}
           onRenderCell={(item: any) => (
-            <div className="ms-font-l sitesItem">
+            <div className="ms-font-s-plus sitesItem">
               <a href={item.Url} className="sitesLink">{item.Title}</a>
               <a onClick={this._removeFavourite.bind(this, item)} className="listAction"><i className="ms-Icon ms-Icon--Cancel ms-fontColor-black ms-fontColor-white--hover"></i></a>
             </div>

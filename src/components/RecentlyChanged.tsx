@@ -29,7 +29,7 @@ export class RecentlyChanged extends React.Component<any, any> {
         <List
           items={items}
           onRenderCell={(item: any) => (
-            <div className="ms-font-l sitesItem">
+            <div className="ms-font-s-plus sitesItem">
               <a href={item.Url} className="sitesLink">{item.Title}</a>
             </div>
           )}

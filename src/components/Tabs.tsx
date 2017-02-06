@@ -18,7 +18,6 @@ export const SelectedTabKey = "SelectedTabKey";
 
 export class Tabs extends React.Component<any, any> {
 
-
   selectedTab: string;
 
   constructor() {
@@ -33,7 +32,7 @@ export class Tabs extends React.Component<any, any> {
 
   public render() {
     return (
-        <Pivot linkSize={ PivotLinkSize.large } linkFormat={ PivotLinkFormat.tabs } initialSelectedKey={this.selectedTab} onLinkClick={ this._onTabSelected }>
+        <Pivot linkSize={ PivotLinkSize.normal } linkFormat={ PivotLinkFormat.tabs } initialSelectedKey={this.selectedTab} onLinkClick={ this._onTabSelected }>
             <PivotItem itemKey="allItems" linkText="Alle">
               <i className={this._getPinnedIcon("allItems")} aria-hidden="true" onClick={this._onTabPinned}></i>
               <Sites />
