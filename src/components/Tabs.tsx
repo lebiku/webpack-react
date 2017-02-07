@@ -14,6 +14,8 @@ import { Sites } from "./AllSites";
 import { Favourites } from "./Favourites";
 import { RecentlyChanged } from "./RecentlyChanged";
 
+import { Translations } from "./locales/data";
+
 export const SelectedTabKey = "SelectedTabKey";
 
 export class Tabs extends React.Component<any, any> {
@@ -33,15 +35,15 @@ export class Tabs extends React.Component<any, any> {
   public render() {
     return (
         <Pivot linkSize={ PivotLinkSize.normal } linkFormat={ PivotLinkFormat.tabs } initialSelectedKey={this.selectedTab} onLinkClick={ this._onTabSelected }>
-            <PivotItem itemKey="allItems" linkText="Alle">
+            <PivotItem itemKey="allItems" linkText={Translations.getByKey("Tabs.All")}>
               <i className={this._getPinnedIcon("allItems")} aria-hidden="true" onClick={this._onTabPinned}></i>
               <Sites />
             </PivotItem>
-            <PivotItem itemKey="favs" linkText="Favoriten">
+            <PivotItem itemKey="favs" linkText={Translations.getByKey("Tabs.Favourites")}>
               <i className={this._getPinnedIcon("favs")} aria-hidden="true" onClick={this._onTabPinned}></i>
               <Favourites />
             </PivotItem>
-            <PivotItem itemKey="recentlyUsed" linkText="Kürzlich verwendet">
+            <PivotItem itemKey="recentlyUsed" linkText={Translations.getByKey("Tabs.RecentlyUsed")}>
               <i className={this._getPinnedIcon("recentlyUsed")} aria-hidden="true" onClick={this._onTabPinned}></i>
               < RecentlyChanged />
             </PivotItem>

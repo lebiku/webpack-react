@@ -12,6 +12,8 @@ import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
 import * as update from "immutability-helper";
 
+import { Translations } from "./locales/data";
+
 declare var siteType: number;
 
 export class Sites extends React.Component<any, any> {
@@ -21,7 +23,7 @@ export class Sites extends React.Component<any, any> {
   constructor() {
     super();
 
-    this.defaultSiteType = 10;
+    this.defaultSiteType = 4;
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
@@ -42,7 +44,7 @@ export class Sites extends React.Component<any, any> {
 
     return (
       <div className="view-container">
-        <TextField label={"Suchbegriff eingeben: " + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <TextField label={Translations.getByKey("Global.SearchBoxTitle") + resultCountText} onBeforeChange={this._onFilterChanged} />
         <List
           items={items}
           onRenderCell={(item: any) => (
@@ -53,7 +55,7 @@ export class Sites extends React.Component<any, any> {
           )}
         />
         <div className="view-actions">
-          <span className="show-all" onClick={this._showAllSites.bind(this)}>alle anzeigen</span>
+          <span className="show-all" onClick={this._showAllSites.bind(this)}>{Translations.getByKey("Global.ShowAll")}</span>
         </div>
       </div>
     );
