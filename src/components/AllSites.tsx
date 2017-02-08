@@ -27,7 +27,7 @@ export class Sites extends React.Component<any, any> {
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
-      filterText: "",
+      // filterText: "",
       items: [],
       allItems: [],
     };
@@ -44,7 +44,7 @@ export class Sites extends React.Component<any, any> {
 
     return (
       <div className="view-container">
-        <TextField label={Translations.getByKey("Global.SearchBoxTitle") + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <TextField label={Translations.getByKey("Global.SearchBoxTitle") + resultCountText} value={this.state.filterText} onBeforeChange={this._onFilterChanged} />
         <List
           items={items}
           onRenderCell={(item: any) => (
@@ -84,10 +84,10 @@ export class Sites extends React.Component<any, any> {
       siteKind = siteType;
     }
 
-    let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(0)/filter(null)";
+    let endpoint = "/_api/search/query?querytext='contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=500&sortList='CoopDisplayTitleFull:ascending'";
 
-    SitesClient.get(endpoint, true).then((response: any) => {
-      this._renderList(response);
+    SitesClient.search(endpoint, true).then((response: any) => {
+      this._renderList(response, true);
     });
   }
 
@@ -112,17 +112,17 @@ export class Sites extends React.Component<any, any> {
       siteKind = siteType;
     }
 
-    let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(" + (text === "" ? 30 : 0) + ")/filter(" + (text === "" ? null : text) + ")";
+    let endpoint = "/_api/search/query?querytext='contentclass:STS_Site+CoopSiteType:" + siteKind + "+Title:" + text + "*'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=" + (text === "" ? 30 : 500) + "&sortList='CoopDisplayTitleFull:ascending'";
 
-    SitesClient.get(endpoint, true).then((response: any) => {
-      this._renderList(response);
+    SitesClient.search(endpoint, true).then((response: any) => {
+      this._renderList(response, false);
     });
   }
 
   private _getFavouriteStatus(item: ISitesListItem): JSX.Element {
     return item.favourite ?
-      <i className="ms-Icon ms-Icon--HeartFill ms-fontColor-black ms-fontColor-white--hover"></i> :
-      <i className="ms-Icon ms-Icon--Heart ms-fontColor-black ms-fontColor-white--hover"></i>;
+      <i className="ms-Icon ms-Icon--AddFavoriteFill ms-fontColor-black ms-fontColor-white--hover"></i> :
+      <i className="ms-Icon ms-Icon--AddFavorite ms-fontColor-black ms-fontColor-white--hover"></i>;
   }
 
   private _renderListAsync(): void {
@@ -130,7 +130,7 @@ export class Sites extends React.Component<any, any> {
     if (typeof _spBodyOnLoadFunctionNames === "undefined") {
       // no SharePoint
       this._getMockListData().then((response) => {
-        this._renderList(response.value);
+        this._renderList(response.value, false);
       });
     } else {
       // SharePoint
@@ -140,10 +140,10 @@ export class Sites extends React.Component<any, any> {
         siteKind = siteType;
       }
 
-      let endpoint = "/_vti_bin/CoopSiteService.svc/sites/siteType(" + siteKind + ")/rowLimit(30)/filter(null)";
+      let endpoint = "/_api/search/query?querytext='contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=30&sortList='CoopDisplayTitleFull:ascending'";
 
-      SitesClient.get(endpoint, true).then((response: any) => {
-        this._renderList(response);
+      SitesClient.search(endpoint, true).then((response: any) => {
+        this._renderList(response, false);
       });
     }
   }
@@ -156,10 +156,10 @@ export class Sites extends React.Component<any, any> {
       }) as Promise<ISitesList>;
   }
 
-  private _renderList(items: ISitesListItem[]): void {
+  private _renderList(items: ISitesListItem[], resetFilter: boolean): void {
 
     this.setState({
-      filterText: "",
+      filterText: resetFilter ? "" : undefined,
       items: items,
       allItems: items,
     });
