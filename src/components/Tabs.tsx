@@ -29,7 +29,7 @@ export class Tabs extends React.Component<any, any> {
     this._onTabPinned = this._onTabPinned.bind(this);
 
     let storedTab = localStorage.getItem(SelectedTabKey);
-    this.selectedTab = storedTab ? storedTab : "allItems";
+    this.selectedTab = storedTab ? storedTab : "favs";
   }
 
   public render() {
