@@ -12,7 +12,9 @@ export default class SitesClient {
       return fetch(url, {
         headers: new Headers({
           "accept": "application/json;odata=verbose",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store",
+          "Pragma": "no-cache",
         }),
         credentials: "include"
       }).then(function (response) {
