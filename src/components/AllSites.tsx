@@ -84,7 +84,7 @@ export class Sites extends React.Component<any, any> {
       siteKind = siteType;
     }
 
-    let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=500&sortList='CoopDisplayTitleFull:ascending'";
+    let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=500&sortList='CoopDisplayTitleFull:ascending'&trimduplicates='false'";
 
     SitesClient.search(endpoint, true).then((response: any) => {
       this._renderList(response, true);
@@ -112,7 +112,7 @@ export class Sites extends React.Component<any, any> {
       siteKind = siteType;
     }
 
-    let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "+CoopDisplayTitleFull:" + text + "*'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=" + (text === "" ? 30 : 500) + "&sortList='CoopDisplayTitleFull:ascending'";
+    let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "+CoopDisplayTitleFull:" + text + "*'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=" + (text === "" ? 30 : 500) + "&sortList='CoopDisplayTitleFull:ascending'&trimduplicates='false'";
 
     SitesClient.search(endpoint, true).then((response: any) => {
       this._renderList(response, false);
@@ -140,7 +140,7 @@ export class Sites extends React.Component<any, any> {
         siteKind = siteType;
       }
 
-      let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=30&sortList='CoopDisplayTitleFull:ascending'";
+      let endpoint = "/_api/search/query?querytext='contentclass:STS_Web+contentclass:STS_Site+CoopSiteType:" + siteKind + "'&selectproperties='Title,WebId,CoopSiteType,Url,CoopDisplayTitle'&rowlimit=30&sortList='CoopDisplayTitleFull:ascending'&trimduplicates='false'";
 
       SitesClient.search(endpoint, true).then((response: any) => {
         this._renderList(response, false);
