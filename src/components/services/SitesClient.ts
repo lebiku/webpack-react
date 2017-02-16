@@ -60,13 +60,20 @@ export default class SitesClient {
           let data = response.json();
           data.then(jsonObject => {
             let items: ISitesListItem[] = [];
-            let results = jsonObject.d.query.PrimaryQueryResult.RelevantResults.Table.Rows.results;
+            let relevantResults = jsonObject.d.query.PrimaryQueryResult.RelevantResults;
+
+            let rowsCount = relevantResults.RowCount;
+            let totalRowsCount = relevantResults.TotalRowsIncludingDuplicates;
+
+            let maxReached = rowsCount === totalRowsCount;
+
+            let results = relevantResults.Table.Rows.results;
 
             results.forEach(function (item: any, index: number) {
               items.push({ Id: index, Title: item.Cells.results[6].Value, SiteId: item.Cells.results[3].Value.replace(/['{}]+/g, ""), Url: item.Cells.results[5].Value, favourite: item.IsFavorite });
             });
 
-            resolve(items);
+            resolve([items, maxReached]);
           });
 
           return data;

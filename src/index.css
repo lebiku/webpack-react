@@ -58,3 +58,11 @@
 .ms-FocusZone{
   margin-right: 30px;
 }
+
+.all-link-hide {
+  display: none;
+}
+
+.all-link-show {
+  display: block;
+}

@@ -30,6 +30,7 @@ export class Sites extends React.Component<any, any> {
       // filterText: "",
       items: [],
       allItems: [],
+      maxReached: true
     };
   }
 
@@ -55,7 +56,7 @@ export class Sites extends React.Component<any, any> {
           )}
         />
         <div className="view-actions">
-          <span className="show-all" onClick={this._showAllSites.bind(this)}>{Translations.getByKey("Global.ShowAll")}</span>
+          <span className={"show-all " + (this.state.maxReached ? "all-link-hide" : "all-link-show")} onClick={this._showAllSites.bind(this)}>{Translations.getByKey("Global.ShowAll")}</span>
         </div>
       </div>
     );
@@ -156,12 +157,16 @@ export class Sites extends React.Component<any, any> {
       }) as Promise<ISitesList>;
   }
 
-  private _renderList(items: ISitesListItem[], resetFilter: boolean): void {
+  private _renderList(response: any, resetFilter: boolean): void {
+
+    let items = response[0];
+    let maxReached = response[1];
 
     this.setState({
       filterText: resetFilter ? "" : undefined,
       items: items,
       allItems: items,
+      maxReached: maxReached
     });
   }
 }
