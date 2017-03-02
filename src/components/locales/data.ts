@@ -8,29 +8,29 @@ export class Translations {
       "Tabs.All": "All",
       "Tabs.Favourites": "Favourites",
       "Tabs.RecentlyUsed": "Recently Used",
-      "Global.ShowAll": "show all",
+      "Global.ShowAll": "Show all",
       "Global.SearchBoxTitle": "Enter search query:"
     },
     "de": {
       "Tabs.All": "Alle",
       "Tabs.Favourites": "Favoriten",
       "Tabs.RecentlyUsed": "Kürzlich verwendet",
-      "Global.ShowAll": "alle anzeigen",
+      "Global.ShowAll": "Alle anzeigen",
       "Global.SearchBoxTitle": "Suchbegriff eingeben:"
     },
     "fr": {
-      "Tabs.All": "... Alle ...",
-      "Tabs.Favourites": "... Favoriten ...",
-      "Tabs.RecentlyUsed": "... Kürzlich verwendet ...",
-      "Global.ShowAll": "... alle anzeigen ...",
-      "Global.SearchBoxTitle": "... Suchbegriff eingeben: ..."
+      "Tabs.All": "Tous",
+      "Tabs.Favourites": "Favoris",
+      "Tabs.RecentlyUsed": "Utilisés récemment",
+      "Global.ShowAll": "Montrer tous",
+      "Global.SearchBoxTitle": "Saisir le terme de recherche"
     },
     "it": {
-      "Tabs.All": "... Alle ...",
-      "Tabs.Favourites": "... Favoriten ...",
-      "Tabs.RecentlyUsed": "... Kürzlich verwendet ...",
-      "Global.ShowAll": "... alle anzeigen ...",
-      "Global.SearchBoxTitle": "... Suchbegriff eingeben: ..."
+      "Tabs.All": "Tutti",
+      "Tabs.Favourites": "Preferiti",
+      "Tabs.RecentlyUsed": "Utilizzato recentemente",
+      "Global.ShowAll": "Mostra tutto",
+      "Global.SearchBoxTitle": "Inserire parola chiave"
     },
   };
 
