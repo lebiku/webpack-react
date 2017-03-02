@@ -1,3 +1,6 @@
+declare var _spBodyOnLoadFunctionNames: any;
+declare var _spPageContextInfo: any;
+
 export class Translations {
 
   private static _dict: { [loc: string]: { [res: string]: string}} = {

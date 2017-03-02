@@ -41,7 +41,7 @@ export default class MockSites {
   ];
 
   public static get(restUrl: string, options?: any): Promise<ISitesListItem[]> {
-    return new Promise<ISitesListItem[]>((resolve) => {
+    return new Promise<ISitesListItem[]>((resolve: any) => {
       resolve(MockSites._items);
     });
   }

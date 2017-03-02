@@ -8,6 +8,8 @@ import { ISitesList, ISitesListItem } from "./services/SPLists";
 import MockSites from "./services/MockSitesClient";
 import SitesClient from "./services/SitesClient";
 
+declare var _spBodyOnLoadFunctionNames: any;
+
 export class RecentlyChanged extends React.Component<any, any> {
   constructor() {
     super();

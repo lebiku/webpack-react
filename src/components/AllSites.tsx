@@ -15,6 +15,7 @@ import * as update from "immutability-helper";
 import { Translations } from "./locales/data";
 
 declare var siteType: number;
+declare var _spBodyOnLoadFunctionNames: any;
 
 export class Sites extends React.Component<any, any> {
 

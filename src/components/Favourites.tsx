@@ -13,6 +13,7 @@ import * as update from "immutability-helper";
 import { Translations } from "./locales/data";
 
 declare var siteType: number;
+declare var _spBodyOnLoadFunctionNames: any;
 
 export class Favourites extends React.Component<any, any> {
   constructor() {

@@ -2,6 +2,8 @@ import { ISitesListItem, ISitesList } from "./SPLists";
 
 import "isomorphic-fetch";
 
+declare var _spPageContextInfo: any;
+
 export default class SitesClient {
 
   public static get(endpoint: string, allSites: boolean, options?: any): Promise<ISitesList[]> {
