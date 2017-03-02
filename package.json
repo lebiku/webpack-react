@@ -24,7 +24,6 @@
     "@types/react-dom": "^0.14.19",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "typescript": "^2.1.4",
     "webpack": "^1.14.0",
     "whatwg-fetch": "^2.0.1"
   },
@@ -41,8 +40,6 @@
     "sp-pnp-js": "^1.0.6",
     "style-loader": "^0.13.1",
     "ts-loader": "^1.2.2",
-    "tslint": "^4.1.1",
-    "typescript": "^2.1.4",
     "webpack-dev-server": "^1.9.0"
   }
 }
