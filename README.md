@@ -15,6 +15,7 @@ The toolchain decisions are critical. Consider it as a checklist or receipt and 
 
 # Preliminaries
 Install typescript and tslint globally and link typescript
+
 1. Run `npm install -g typescript` 
 2. Run `npm install -g tslint`
 3. Run `npm link typescript`
