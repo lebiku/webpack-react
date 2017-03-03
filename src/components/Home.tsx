@@ -14,7 +14,7 @@ export class Home extends React.Component<HomeProps, {}> {
     this._renderListAsync();
 
     return <div>
-      <h1 className="myRed">Run kusi run!<i className="ms-Icon ms-Icon--Airplane myIcon" aria-hidden="true"></i></h1>
+      <h1 className="myRed">Hello React!<i className="ms-Icon ms-Icon--Like myIcon" aria-hidden="true"></i></h1>
       <div id="spListContainer" />
     </div>;
   }
