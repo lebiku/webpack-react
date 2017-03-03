@@ -13,13 +13,6 @@ The toolchain decisions are critical. Consider it as a checklist or receipt and 
 * Visual Studio Code 
 * [Editorconfig](http://editorconfig.org/) for formatting (Download / Install the plugin in Visual Studio Code)
 
-# Preliminaries
-Install typescript and tslint globally and link typescript
-
-1. Run `npm install -g typescript` 
-2. Run `npm install -g tslint`
-3. Run `npm link typescript`
-
 # Installation instruction.
 git clone the current repository.
 1. Run `npm install` (This installs the required node modules)
